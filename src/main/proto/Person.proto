@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package proto;
+
+option optimize_for =SPEED;
+option java_package = "com.show.grpc";
+option java_outer_classname = "Person";
+option java_multiple_files =true;
+service PersonService {
+    rpc GetPerson (PersonRequest) returns (PersonResponse);
+    rpc GetPersonByName(PersonRequest) returns(stream PersonResponse);
+    rpc GetPersonWapperByName(stream PersonRequest) returns(PersonResponseList);
+    rpc BiTalk(stream StreamRequest ) returns(stream StreamResponse);
+}
+
+message PersonRequest {
+    string name = 1;
+}
+
+message PersonResponse {
+    string name = 1;
+    int32 id = 2;
+    string city =3;
+}
+
+message StreamRequest{
+    string request_info =1;
+}
+message StreamResponse{
+    string response_info=1;
+}
+message PersonResponseList{
+    repeated PersonResponse personResonse =1;
+}
+

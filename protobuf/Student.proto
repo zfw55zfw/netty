@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package protobuf;
+
+option optimize_for =SPEED;
+option java_package = "com.show.protobufnetty";
+option java_outer_classname = "DataInfo";
+
+message Student {
+  required string name = 1;
+  required int32 id = 2;
+  optional string email = 3;
+}
+
+message AddressBook {
+  repeated Student student = 1;
+}
